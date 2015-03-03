@@ -1,14 +1,25 @@
-<h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
-<form accept-charset="UTF-8" action="/" method="post">
-  <input name="utf8" type="hidden" value="&#x2713;" />
-  <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
-  Form contents
-</form>
+<h1>Search for Movies useing Rails and Typhoeus</h1>
+<%= link_to "Home", root_path %>
 
+<%= form_tag("/movies/index", method: "get") do %>
+  <%= label_tag(:search, "Search for:") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
+<!-- < %= @movies %><br><br> -->
+<% if @movies %>
+  <div id="movie_output">
+    <ul>
+      <% @movies.each do |movie| %>
+        <li><%= movie["Year"] %> - <%= movie["Title"] %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-<!-- listen for the form submit then trigger the ajax to ombd
+<!-- in part 2
+listen for the form submit then trigger the ajax to ombd
 get json back
 on client side take the json obj back and formatting it in handlebars
 prvent default on the submit button
