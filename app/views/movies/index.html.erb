@@ -1,9 +1,9 @@
-<h1>Search for Movies useing Rails and Typhoeus</h1>
+<h1>Search for Movies using Rails and Typhoeus</h1>
 <%= link_to "Home", root_path %>
 
 <%= form_tag("/movies/index", method: "get") do %>
   <%= label_tag(:search, "Search for:") %>
-  <%= text_field_tag(:search) %>
+  <%= text_field_tag(:search, autofocus: true) %>
   <%= submit_tag("Search") %>
 <% end %>
 
