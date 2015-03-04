@@ -1,9 +1,5 @@
 class MoviesController < ApplicationController
   def index
-
-  end
-
-  def search
     search_title = params[:search]
     request = Typhoeus::Request.new(
       "http://www.omdbapi.com/?",
@@ -13,7 +9,14 @@ class MoviesController < ApplicationController
     request.run
     movies = JSON.parse(request.response.body)
     @movies = movies["Search"]
-    # binding.pry
-    render :index
+
+    respond_to do |format|
+      format.html # render .erb template as normal
+      format.json {render :json => @movies}
+    end
   end
+
+  def search
+  end
+
 end

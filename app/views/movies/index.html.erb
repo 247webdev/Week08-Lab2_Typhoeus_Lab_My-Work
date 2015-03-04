@@ -7,8 +7,7 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<!-- < %= @movies %><br><br> -->
-<% if @movies %>
+<%if @movies %>
   <div id="movie_output">
     <ul>
       <% @movies.each do |movie| %>
@@ -17,10 +16,3 @@
     </ul>
   </div>
 <% end %>
-
-<!-- in part 2
-listen for the form submit then trigger the ajax to ombd
-get json back
-on client side take the json obj back and formatting it in handlebars
-prvent default on the submit button
- -->
